@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>login</title>
+	{%load static%}
+	<link rel="stylesheet" type="text/css" href="{%static './css/style.css'%}">
+</head>
+
+<body>
+
+	<body id="body_tag">
+		<div class="container" style="background-image: url('{% static './pics/backgd.jpg' %}');">
+			<div class="header">
+				<h1>login</h1>
+			</div>
+			<div class="main">
+				<form>
+					<span>
+						<input type="text" placeholder="Username" name="">
+					</span><br>
+					<span>
+						<i class="fa fa-lock"></i>
+						<input type="password" placeholder="password" name="">
+					</span><br>
+					<div class="lgn-buttons">
+						<button class="lgn-btn">Login</button>
+						<button class="fgt-btn">Forgot Password</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="space"></div>
+	</body>
+
+</body>
+
+
+</html>
