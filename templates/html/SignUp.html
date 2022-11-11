@@ -3,8 +3,8 @@
 <html>
 <head>
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{%static './css/login.css'%}">
-<title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{%static './css/SignUp.css'%}">
+<title>Sign Up</title>
 <script>
     function validate(){
         var username=document.login_form.username;
@@ -30,7 +30,7 @@
       <div class="form">
         <div class="login">
           <div class="login-header">
-            <h3 id="lgn">LOGIN</h3>
+            <h3 id="lgn">SIGN UP</h3>
           </div>
         </div>
         <form method="post" action="../PHP/login.php" name="login_form" class="login-form" id="form" onsubmit='return validate()'>
@@ -38,12 +38,9 @@
               <option name="student" value="stu">Student</option>
               <option name="admin" value="admin">Admin</option>
         </select> -->
-          <input name="username" type="text" placeholder="username"/>
-          <input name="pass" type="password" placeholder="password"/>
-          <button type="submit" name="login">login</button><br><br>
-          <button type="submit" name="SignUp">SignUp</button>
+          <input name="useremail" type="text" placeholder="Email"/>
+          <button type="submit" name="login">Verify Email</button>
           <br>
-          <br><a href="/"><u style="padding:11%">Forgot Password</u></a>
         </form>
       </div>
     </div>
