@@ -33,17 +33,17 @@
             <h3 id="lgn">LOGIN</h3>
           </div>
         </div>
-        <form method="post" action="../PHP/login.php" name="login_form" class="login-form" id="form" onsubmit='return validate()'>
+        <form method="post" action="" name="login_form" class="login-form" id="form" >
             <!-- <select name="user"id="user">
               <option name="student" value="stu">Student</option>
               <option name="admin" value="admin">Admin</option>
         </select> -->
           <input name="username" type="text" placeholder="username"/>
           <input name="pass" type="password" placeholder="password"/>
-          <button type="submit" name="login">login</button><br><br>
-          <button type="submit" name="SignUp">SignUp</button>
+          <button type="submit" name="login" onclick='validate()'>login</button><br><br>
+          <button name="SignUp">SignUp</button>
           <br>
-          <br><a href="/"><u style="padding:11%">Forgot Password</u></a>
+          <br><a href="{}"><u style="padding:11%">Forgot Password</u></a>
         </form>
       </div>
     </div>

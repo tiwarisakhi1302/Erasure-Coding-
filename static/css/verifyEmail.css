@@ -281,7 +281,6 @@
     z-index: 3;
     filter: blur(4px);
   }
-
   @keyframes raise10 {
     to {
       bottom: 150vh;
