@@ -18,6 +18,16 @@
     --border-radius: 60px 5px;
     --fade-green: rgba(57, 87, 64, 0.55);
   }
+
+  #forgot_pass:link { color: inherit; text-decoration: none;}
+#forgot_pass:visited { color: inherit}
+#forgot_pass:hover { text-decoration: underline; color: blue}
+#forgot_pass:active { text-decoration: underline; }
+
+/* a{
+  color : red;
+  text-decoration : none
+} */
   
   
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -287,4 +297,5 @@
       transform: scale(2.4) rotate(215deg);
     }
   }
+
   

@@ -19,6 +19,10 @@
     --fade-green: rgba(57, 87, 64, 0.55);
   }
   
+  #red_log:link { color: inherit; text-decoration: none;}
+  #red_log:visited { color: inherit}
+  #red_log:hover { text-decoration: underline; color: blue}
+  #red_log:active { text-decoration: underline; }
   
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
   header .header{

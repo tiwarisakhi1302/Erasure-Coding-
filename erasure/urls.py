@@ -3,8 +3,6 @@ from django.urls import path
 from erasure import views
 urlpatterns = [
     path("",views.index,name='home'),
-    path("SignUp",views.SignUp,name='SignUp'),
-    path("verifyEmail",views.verifyEmail,name='verifyEmail'),
-
-
+    path("SignUp",views.SignUp,name='SignUp_attempt'),
+    path("verifyEmail",views.verifyEmail,name='verifyEmail_attempt'),
 ]

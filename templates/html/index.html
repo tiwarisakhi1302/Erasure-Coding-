@@ -25,6 +25,7 @@
 </script>
 </head>
 <body style="zoom : 100%">
+  {%block content%}
   <body>
     <div class="login-page">
       <div class="form">
@@ -41,9 +42,9 @@
           <input name="username" type="text" placeholder="username"/>
           <input name="pass" type="password" placeholder="password"/>
           <button type="submit" name="login" onclick='validate()'>login</button><br><br>
-          <button name="SignUp">SignUp</button>
+          <button name="SignUp"><a href="{%url 'verifyEmail_attempt'%}" style="text-decoration: none; color: inherit">SignUp</a></button>
           <br>
-          <br><a href="{}"><u style="padding:11%">Forgot Password</u></a>
+          <br><a id="forgot_pass"href="/">Forgot Password</a>
         </form>
       </div>
     </div>
@@ -85,5 +86,6 @@
         </svg>
         </div>
 </body>
+{%endblock%}
 </body>
 </html>
