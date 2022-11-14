@@ -2,16 +2,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{%static './css/dashboard.css'%}">
 <title>Dashboard</title>
+<script src="https://kit.fontawesome.com/6c36d92623.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/8d1d7500d6.js" crossorigin="anonymous"></script>
+<meta name="designer" content="Alberto Hartzet">
+<meta name="programer" content="Alberto Hartzet">
+<meta name="author" content="Alberto Hartzet">
+<meta name="description" content="One page navigation with pure CSS">
+<meta property="og:url" content="https://codepen.io/hrtzt/details/NPZKRN">
+<meta property="og:image" content="https://pbs.twimg.com/media/CCNJN_XUMAAJSzU.jpg:large">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
-<body style="zoom : 100%">
-  {%block content%}
-  {% comment %} Hi {{username}} {% endcomment %}
-  <body>
-    
-</body>
+<body>
+{%block content%}
+<div class="ct" id="t1">
+    <div class="ct" id="t2">
+      <div class="ct" id="t3">
+        <div class="ct" id="t4">
+           <div class="ct" id="t5">
+            <ul id="menu">
+              <a href="#t1"><li class="icon fa fa-home fa-3x" id="uno"></li></a><br>
+              <a href="#t2"><li class="icon fa fa-file-o fa-3x" id="dos"></li></a><br>
+              <a href="#t3"><li class="icon fa-sharp fa-h fa-3x" id="tres"></li></a>
+            </ul>
+            <div class="page" id="p1">
+               <section class="icon fa fa-home"><span class="title">Home</span><span class="hint">Like this pen to see the magic!...<br> Just kidding, it won't happen anything but I'll be really happy If you do so.</span></section>  
+            </div>
+            <div class="page" id="p2">
+              <section class="icon fa fa-file-o"><span class="title">My Files</span></section>
+            </div>  
+            <div class="page" id="p3">
+              <section class="icon fa fa-sharp fa-h"><span class="title">Help</span></section>
+            </div>
+            <div class="page" id="p4">
+              <section class="icon fa fa-dribbble">
+                <span class="title">Dribbble</span>
+                <p class="hint">
+                  <a href="https://dribbble.com/hrtzt" target="_blank">Im ready to play, <span class="hint line-trough">invite me </span> find me</a>
+                </p>
+                <p class="hint">Already invited by <a href="http://www.dribbble.com/mrpeters" target="_blank">Stan Peters</a></p>
+              </section>
+            </div> 
+            <div class="page" id="p5">
+              <section class="icon fa fa-plus-circle">
+                <span class="title">More</span>
+                <p class="hint">
+                  <span>You love one page & CSS only stuff? </span><br/>
+                  <a href="https://codepen.io/hrtzt/details/pgXMYb/" target="_blank">check this pen "Pure CSS One page vertical navigation"</a>
+                </p>
+              </section>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- partial --> 
 {%endblock%}
 </body>
 </html>
