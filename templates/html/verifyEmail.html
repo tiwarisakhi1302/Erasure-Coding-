@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +5,46 @@
   <link rel="stylesheet" type="text/css" href="{%static './css/verifyEmail.css'%}">
 <title>Email Verification</title>
 </head>
+<script>
+  function validate(){
+      var username=document.login_form.username;
+      var pass=document.login_form.pass;
+      var con_pass=document.login_form.con_pass;
+      var mail = document.login_form.email;
+      if(username.value.length<=0){
+          alert("Username is Required");
+          username.focus();
+          return false;
+      }
+      if(pass.value.length<=0){
+          alert("Password Required");
+          pass.focus();
+          return false;
+      }
+      if(con_pass.value.length<=0){
+          alert("Confirm Password Required");
+          pass.focus();
+          return false;
+      }
+      if(mail.value.lenght<=0){
+        alert("Confirm Password Required");
+          email.focus();
+          return false;
+      }
+      if(pass.value.length<8 && pass.value.length>15){
+          alert("Password length must be between 8 to 15");
+          pass.focus();
+          return false;
+      }
+      if(con_pass.value!=pass.value){
+          alert("Cofirm Password must match to your password")
+          con_pass.focus();
+          return false;
+      }
+
+      return true;
+  }
+</script>
 <body>
   {% block content %}
   <body style ="zoom : 100%">
@@ -13,12 +52,26 @@
       <div class="form">
         <div class="login">
           <div class="login-header">
-            <h3 id="lgn">Enter Email</h3>
+            
+            <h3 id="lgn">SignUp</h3>
           </div>
         </div>
-        <form method="post" action="" name="login_form" class="login-form" id="form" onsubmit='return validate()'>
-          <input name="useremail" type="email" placeholder="Email"/>
-          <button href='/'>Verify Email</button>
+        <form method="post" name="login_form" class="login-form" id="form" onsubmit='return validate()'>
+          {% csrf_token%}
+          {% if messages %}
+                
+              {% for message in messages %}
+              <div class="alert alert-info">
+                  {{ message }}
+              </div>
+              {% endfor %}
+        
+          {% endif %}
+          <input name="username" type="text" placeholder="username"/>
+          <input name="password" type="password" placeholder="password"/>
+          <input name="con_pass" type="password" placeholder="confirm password"/>
+          <input name="email" type="email" placeholder="Email"/>
+          <button name="verify_email" type="submit">Verify Email</button>
           <br>
         </form>
       </div>

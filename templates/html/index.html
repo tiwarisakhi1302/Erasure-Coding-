@@ -35,10 +35,11 @@
           </div>
         </div>
         <form method="post" action="" name="login_form" class="login-form" id="form" >
+          {% csrf_token %}
           <input name="username" type="text" placeholder="username"/>
           <input name="pass" type="password" placeholder="password"/>
           <button type="submit" name="login" onclick='validate()'>login</button><br><br>
-          <button name="SignUp"><a href="{%url 'verifyEmail_attempt'%}" style="text-decoration: none; color: inherit">SignUp</a></button>
+          <button name="SignUp"><a href="{%url 'verifyEmail_attempt' %}" style="text-decoration: none; color: inherit">SignUp</a></button>
           <br>
           <br><a id="forgot_pass"href="/">Forgot Password</a>
         </form>

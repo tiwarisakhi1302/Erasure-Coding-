@@ -4,41 +4,6 @@
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{%static './css/token_send.css'%}">
 <title>Sign Up</title>
-<script>
-    function validate(){
-        var username=document.login_form.username;
-        var pass=document.login_form.pass;
-        var con_pass=document.login_form.con_pass;
-
-        if(username.value.length<=0){
-            alert("Username is Required");
-            username.focus();
-            return false;
-        }
-        if(pass.value.length<=0){
-            alert("Password Required");
-            pass.focus();
-            return false;
-        }
-        if(con_pass.value.length<=0){
-            alert("Confirm Password Required");
-            pass.focus();
-            return false;
-        }
-        if(pass.value.length<8 && pass.value.length>15){
-            alert("Password length must be between 8 to 15");
-            pass.focus();
-            return false;
-        }
-        if(con_pass.value!=pass.value){
-            alert("Cofirm Password must match to your password")
-            con_pass.focus();
-            return false;
-        }
-
-        return true;
-    }
-</script>
 </head>
 <body style="zoom : 100%">
     {%block content%}
