@@ -2,8 +2,8 @@
 <html>
 <head>
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{%static './css/token_send.css'%}">
-<title>Mail send successfully</title>
+  <link rel="stylesheet" type="text/css" href="{%static './css/success.css'%}">
+<title>Error</title>
 </head>
 <body style="zoom : 100%">
     {%block content%}
@@ -12,7 +12,8 @@
       <div class="form">
         <div class="login">
           <div class="login-header">
-            <h3 id="lgn">Email Sent successfully</h3>
+            <h3 id="lgn" style="color:red">There is Error with your account authentication</h3><br><br>
+            <a id="log" href={%url 'home'%}>Back To Login</a>
           </div>
         </div>
         <form method="post" action="" name="login_form" class="login-form" id="form" onsubmit='return validate()'>

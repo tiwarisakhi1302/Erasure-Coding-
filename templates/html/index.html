@@ -36,6 +36,15 @@
         </div>
         <form method="post" action="" name="login_form" class="login-form" id="form" >
           {% csrf_token %}
+          {% if messages %}
+                
+              {% for message in messages %}
+              <div class="">
+                  {{ message }}
+              </div>
+              {% endfor %}
+        
+          {% endif %}
           <input name="username" type="text" placeholder="username"/>
           <input name="pass" type="password" placeholder="password"/>
           <button type="submit" name="login" onclick='validate()'>login</button><br><br>
