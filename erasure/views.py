@@ -41,6 +41,8 @@ def success(request):
       return render(request,'../templates/html/success.html')
 def token_send(request):
       return render(request,'../templates/html/token_send.html')
+def dashboard(request):
+      return render(request,'../templates/html/dashboard.html')
 
 def send_mail_after_registration(email, token) :
       subject = 'Your account need to be verified'

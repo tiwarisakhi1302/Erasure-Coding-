@@ -22,5 +22,5 @@ urlpatterns = [
     path('verifyEmail' , verifyEmail , name="verifyEmail_attempt"),
     path('token_send' , token_send , name="token_send_attempt"),
     path('success' , success , name='success'),
-    path('SignUp' , SignUp , name='SignUp_attempt')
+    path('dashboard', dashboard, name='dashboard_attempt')
 ]
