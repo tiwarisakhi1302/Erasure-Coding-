@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-#import os.path
+import os.path
 
 #PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'erasure'
+    # 'erasure.apps.ErasureConfig'
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -79,7 +80,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME':'ErasureCoding',
+    #  }
 }
+
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'djongo',
+#         'NAME':'ErasureCoding',
+#      }
+#  }
 
 
 # Password validation
@@ -133,11 +145,15 @@ STATICFILES_DIRS = [
     BASE_DIR / "static/"
 ]
 
+# STATICFILES_DIRS = (
+#   os.path.join(BASE_DIR, 'static/'),
+# )
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'codeforgood90@gmail.com'
-EMAIL_HOST_PASSWORD = 'ctnttpdysnqfdery'
+EMAIL_HOST_PASSWORD = 'vcwthvukvkysrpmy'
 #Sakshi@13
 

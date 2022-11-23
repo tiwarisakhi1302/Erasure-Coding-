@@ -6,34 +6,33 @@ from .models import *
 from django.conf import settings
 from django.core.mail import send_mail
 import uuid
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
       if request.method == 'POST' :
             username = request.POST.get('username')
             password = request.POST.get('password')
-
-            print(password)
-            print(username)
-            
+            print('Hi sakshi')
             user_obj = User.objects.filter(username = username).first()
             
             if user_obj is None :
                   messages.success(request, 'User not found')
-                  return redirect('/');
+                  return redirect('/')
+            
             profile_obj = Profile.objects.filter(user = user_obj).first()
 
             if not profile_obj.is_verified :
                   messages.success(request, 'Account is not verified yet. Check your mail')
-                  return redirect('/');
-            user=authenticate(username=username, password=password)
-            if authenticate(username=username, password=password) == False :
+                  return redirect('/')
+
+            user = authenticate(username=username, password=password)
+
+            if user is None :
                   messages.success(request, 'Wrong Password')
-                  return redirect('/');
-            
-            # login(request, user)
+                  return redirect('/')
             return redirect('/dashboard')
+      print('Hi Sakshi Tiwari')
       return render(request,'../templates/html/index.html')
 
 def SignUp(request):
@@ -54,7 +53,7 @@ def verifyEmail(request):
 
                   user_obj = User(username = username, email = email)
                   user_obj.set_password(password)
-                  user_obj.save();
+                  user_obj.save()
                   auth_token = str(uuid.uuid4())
                   profile_obj = Profile.objects.create(user=user_obj, auth_token = auth_token)
                   profile_obj.save()
@@ -89,6 +88,9 @@ def error_page(request):
       return render(request, '../templates/html/error.html')
 def dashboard(request):
       return render(request,'../templates/html/dashboard.html')
+
+def testing(request):
+      return render(request, '../templates/html/testing.html')
 
 def send_mail_after_registration(email, token) :
       subject = 'Your account need to be verified'

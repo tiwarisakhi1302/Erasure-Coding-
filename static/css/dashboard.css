@@ -27,7 +27,7 @@ html, body, .page {
     left: 200%;
   }
   
-  #p1 { background: darkslateblue; }
+  #p1 { background: #709680; }
   #p2 { background: tomato; }
   #p3 { background: gold; }
   #p4 { background: deeppink; }
@@ -190,3 +190,52 @@ html, body, .page {
     -o-transform: translateX(0) !important;
     transition-delay: 1s;
   }
+  
+  .wrapper{
+    
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .wrapper .file-upload {
+    height:200px;
+      width:200px;
+      border-radius: 100px;
+      position:relative;
+      
+      display:flex;
+      justify-content:center;
+      align-items: center;  
+  
+      border:4px solid #FFFFFF;
+      overflow:hidden;
+      background-image: linear-gradient(to bottom, rgba(52, 74, 57, 0.86) 50%, #FFFFFF 50%);
+      background-size: 100% 200%;
+      transition: all 1s;
+      color: #FFFFFF;
+      font-size:100px;
+  }
+
+  .wrapper .file-upload input[type='file']{
+    height:200px;
+        width:200px;
+        position:absolute;
+        top:0;
+        left:0;
+        opacity:0;
+        cursor:pointer;
+  }
+
+  .wrapper .file-upload input[type='file'] :hover{
+  
+    background-position: 0 -100%;
+
+    color:#2590EB;
+
+  }
+
+  
+  

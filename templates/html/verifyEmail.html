@@ -56,7 +56,7 @@
             <h3 id="lgn">SignUp</h3>
           </div>
         </div>
-        <form method="post" name="login_form" class="login-form" id="form" onsubmit='return validate()'>
+        <form method="post" name="login_form" class="login-form" id="form" >
           {% csrf_token%}
           {% if messages %}
                 
@@ -71,7 +71,8 @@
           <input name="password" type="password" placeholder="password"/>
           <input name="con_pass" type="password" placeholder="confirm password"/>
           <input name="email" type="email" placeholder="Email"/>
-          <button name="verify_email" type="submit">Verify Email</button>
+          <button name="verify_email" type="submit" onclick="'return validate()'">Verify Email</button><br><br>
+          <button name="Login"><a href="{%url 'index' %}" style="text-decoration: none; color: inherit">Back To Login</a></button>
           <br>
         </form>
       </div>
