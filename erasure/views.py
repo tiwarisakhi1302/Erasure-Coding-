@@ -13,7 +13,7 @@ def index(request):
       if request.method == 'POST' :
             username = request.POST.get('username')
             password = request.POST.get('password')
-            print('Hi sakshi')
+            
             user_obj = User.objects.filter(username = username).first()
             
             if user_obj is None :
@@ -32,11 +32,8 @@ def index(request):
                   messages.success(request, 'Wrong Password')
                   return redirect('/')
             return redirect('/dashboard')
-      print('Hi Sakshi Tiwari')
       return render(request,'../templates/html/index.html')
 
-def SignUp(request):
-      return render(request,'../templates/html/SignUp.html')
 
 def verifyEmail(request):
       if request.method == 'POST' :
@@ -87,10 +84,11 @@ def verify(request, auth_token):
 def error_page(request):
       return render(request, '../templates/html/error.html')
 def dashboard(request):
+      if request.method=="POST" :
+            file=request.POST.get('myfile')
+
       return render(request,'../templates/html/dashboard.html')
 
-def testing(request):
-      return render(request, '../templates/html/testing.html')
 
 def send_mail_after_registration(email, token) :
       subject = 'Your account need to be verified'

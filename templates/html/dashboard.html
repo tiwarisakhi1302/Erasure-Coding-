@@ -34,14 +34,21 @@
                <section class="icon">
                 <div class="wrapper">
                   <div class="file-upload">
-                    <input type="file" />
+                    <form method="POST">
+                    <input type="file" name="myfile"/>
+                    </form>
                     <i class="fa fa-arrow-up"></i>
                   </div>
                 </div>
               </section>  
             </div>
             <div class="page" id="p2">
-              <section class="icon fa fa-file-o"><span class="title">My Files</span></section>
+              <section class="icon fa fa-file-o">
+                {% comment %} {%if files%}
+                  {% for file in files%}
+                  {%end for%}
+                {%end if%} {% endcomment %}
+              </section>
             </div>  
             <div class="page" id="p3">
               <section class="icon fa fa-sharp fa-h"><span class="title">Help</span></section>

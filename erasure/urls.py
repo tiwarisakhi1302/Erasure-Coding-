@@ -1,21 +1,8 @@
-# from django.contrib import admin
-# from django.urls import path
-# from erasure import views
-# from django.conf import settings
-# from django.conf.urls.static import static
-
-
-# urlpatterns = [
-#     path("",views.index,name='home'),
-#     path("SignUp",views.SignUp,name='SignUp_attempt'),
-#     path("verifyEmail",views.verifyEmail,name='verifyEmail_attempt'),
-#     path("success",views.success,name='success'),
-#     path("token_send",views.token_send,name='token_send_attempt'),
-# ]
-
 from django.contrib import admin
 from django.urls import path
 from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -26,5 +13,6 @@ urlpatterns = [
     path('dashboard', dashboard, name='dashboard_attempt'),
     path('verify/<auth_token>', verify, name="verify"),
     path('error', error_page, name="error"),
-    path('testing', testing, name="testing")
 ]
+
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
