@@ -1,51 +1,63 @@
 from reedsolo import RSCodec
 from pathlib import Path
-import array
+# from encode import size_of_file
 
 file_name="input"
 
-#  first go to the user folder
-#  Then find the file he/she is demanding
-# input : this is variable and will be come from
+fli = "./media/"+file_name+".txt"
 
-fle="./media/"+file_name+"_encode.txt"
+fle="./media/"+file_name+"_encode.bin"
 
-f2 = open(fle)
+f = open(fle, 'rb')
 
-parity = ""
+parity=f.read()
 
-for i in f2 :
-    print(i)
-    
-    # parity = parity + i;
+f.close()
 
-l=[l.rstrip() for l in f2]
+fle_s ="./media/"+file_name+"_original_len.txt"
+f = open(fle_s, 'r')
+size = f.read()
 
-# f2.close()
+size_of_file = int(size)
 
-n=""
+f.close()
+# print(parity)
 
-for itr in l :
-    n = itr
+temp=""
 
-# n = int(n)
-print(n)
+for i in range(size_of_file) :
+    temp = temp + 'X';
 
-# temp = ""
+t = bytes(temp, encoding='latin-1')
 
-# for i in range(n) :
-#     temp = temp + 'X'
+# print(t)
 
-# print(temp)
+if(2*size_of_file> 254) :    #127
+    rsc = RSCodec(254)
+else :
+    rsc = RSCodec(2*size_of_file)
 
+temp1 = t + parity
 
-# temper_data = temp + parity
+# print(temp1)
 
-# print(temper_data)
+# Decoding (repairing)
 
+decoded_msg, decoded_msgecc, errata_pos = rsc.decode(temp1)
 
+# print(decoded_msg)
 
+data = str(decoded_msg)
 
+data = data.removeprefix("bytearray(b'")
+data = data.removesuffix("')")
 
+# print(data)
 
+fli="./media/"+file_name+".txt"
+f = open(fli, "w")
+f.write(data)
 
+print('File is decoded successfully')
+
+# print(data)

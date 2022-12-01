@@ -17,7 +17,9 @@ if(2*size_of_file > 254) :    #127
 else :
     rsc = RSCodec(2*size_of_file)
 
-b_str=bytearray(str1, 'utf-8');
+b_str=bytes(str1, 'utf-8');
+
+# print(b_str)
 
 encoded_msg= rsc.encode(b_str)
 
@@ -25,36 +27,24 @@ encoded_msg= rsc.encode(b_str)
 
 parity_block = encoded_msg.removeprefix(b_str)
 
-parity_block_str = str(parity_block)
+# print(parity_block)
 
-parity_block_str = parity_block_str.removeprefix("bytearray(b'")
+# print(size_of_file)
 
-parity_block_str = parity_block_str.removesuffix("')")
+fle="./media/"+file_name+"_encode.bin"
+f = open(fle, "wb")
 
-# print(parity_block_str)
-
-
-fle="./media/"+file_name+"_encode.txt"
-
-f = open(fle, "w")
-
-f.write("")
+f.write(parity_block)
 
 f.close()
 
-f = open(fle, "a")
+size = str(size_of_file)
 
-f.write(parity_block_str + '\n')
+fli1="./media/"+file_name+"_original_len.txt"
+f=open(fli1, "w")
+f.write(size)
 
-f.write(str(size_of_file))
-
-f.close()
-
-# recover the original
-
-# decoded_msg, decoded_msgecc, errata_pos = rsc.decode()
-
-
+print('File is Encoded successfully')
 
 
 

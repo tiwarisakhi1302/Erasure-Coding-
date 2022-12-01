@@ -1,5 +1,4 @@
-for itr in l :
-    n = itr
+data = data.removeprefix("bytearray(b'")
+# data = data.removesuffix("')")
 
-n = int(n)
-print(n)
+# print(data)
