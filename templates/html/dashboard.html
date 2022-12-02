@@ -18,6 +18,18 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
+<script>
+  function updateList() {
+  var input = document.getElementById('myfile');
+  var output = document.getElementById('file_output');
+
+  output.innerHTML = '<ul>';
+  for (var i = 0; i < input.files.length; ++i) {
+    output.innerHTML += input.files.item(i).name;
+  }
+  output.innerHTML += '</ul>';
+}
+</script>
 <body>
 {%block content%}
 <div class="ct" id="t1">
@@ -33,23 +45,24 @@
             <div class="page" id="p1">
                <section class="icon">
                 <div class="wrapper">
-                  <form method="POST" action="{%url 'upload'%}">
+                  <form method="POST" action="{%url 'upload' %}" enctype="multipart/form-data">
                     {%csrf_token%}
-                  <div class="file-upload">
-                    <input type="file" name="myfile">
+                  <div class="file-upload" style="margin-left: 25%;">
+                    <input type="file" name="myfile" id="myfile"onchange="updateList()">
                     <i class="fa fa-arrow-up"></i></input>
                   </div>
-                  <button type="submit">Upload</button>
-                    </form>
+                  <div id="file_output" style="font-size: 15px; margin-left: 38%"></div>
+                  <button class="button-33" type="submit">Save File</button>
+                  </form>
                 </div>
-              </section>  
+              </section>
             </div>
             <div class="page" id="p2">
               <div class="page-header">Files that can be recovered</div>
               <section class="icon fa fa-file-o">
-                
+
               </section>
-            </div>  
+            </div>
             <div class="page" id="p3">
               <section class="icon fa fa-sharp fa-h"><span class="title">Help</span></section>
             </div>
@@ -58,7 +71,7 @@
       </div>
     </div>
   </div>
-  <!-- partial --> 
+  <!-- partial -->
 {%endblock%}
 </body>
 </html>
