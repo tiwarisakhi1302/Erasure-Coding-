@@ -1,63 +1,65 @@
-from reedsolo import RSCodec
-from pathlib import Path
-# from encode import size_of_file
+def recover(file_name):
 
-file_name="input"
+    from reedsolo import RSCodec
+    from pathlib import Path
+    # from encode import size_of_file
 
-fli = "./media/"+file_name+".txt"
+    file_name="input"
 
-fle="./media/"+file_name+"_encode.bin"
+    fli = "./media/"+file_name+".txt"
 
-f = open(fle, 'rb')
+    fle="./media/"+file_name+"_encode.bin"
 
-parity=f.read()
+    f = open(fle, 'rb')
 
-f.close()
+    parity=f.read()
 
-fle_s ="./media/"+file_name+"_original_len.txt"
-f = open(fle_s, 'r')
-size = f.read()
+    f.close()
 
-size_of_file = int(size)
+    fle_s ="./media/"+file_name+"_original_len.txt"
+    f = open(fle_s, 'r')
+    size = f.read()
 
-f.close()
-# print(parity)
+    size_of_file = int(size)
 
-temp=""
+    f.close()
+    # print(parity)
 
-for i in range(size_of_file) :
-    temp = temp + 'X';
+    temp=""
 
-t = bytes(temp, encoding='latin-1')
+    for i in range(size_of_file) :
+        temp = temp + 'X';
 
-# print(t)
+    t = bytes(temp, encoding='latin-1')
 
-if(2*size_of_file> 254) :    #127
-    rsc = RSCodec(254)
-else :
-    rsc = RSCodec(2*size_of_file)
+    # print(t)
 
-temp1 = t + parity
+    if(2*size_of_file> 254) :    #127
+        rsc = RSCodec(254)
+    else :
+        rsc = RSCodec(2*size_of_file)
 
-# print(temp1)
+    temp1 = t + parity
 
-# Decoding (repairing)
+    # print(temp1)
 
-decoded_msg, decoded_msgecc, errata_pos = rsc.decode(temp1)
+    # Decoding (repairing)
 
-# print(decoded_msg)
+    decoded_msg, decoded_msgecc, errata_pos = rsc.decode(temp1)
 
-data = str(decoded_msg)
+    # print(decoded_msg)
 
-data = data.removeprefix("bytearray(b'")
-data = data.removesuffix("')")
+    data = str(decoded_msg)
 
-# print(data)
+    data = data.removeprefix("bytearray(b'")
+    data = data.removesuffix("')")
 
-fli="./media/"+file_name+".txt"
-f = open(fli, "w")
-f.write(data)
+    # print(data)
 
-print('File is decoded successfully')
+    fli="./media/"+file_name+".txt"
+    f = open(fli, "w")
+    f.write(data)
 
-# print(data)
+    print('File is decoded successfully')
+
+    # print(data)

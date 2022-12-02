@@ -13,6 +13,8 @@ urlpatterns = [
     path('dashboard', dashboard, name='dashboard_attempt'),
     path('verify/<auth_token>', verify, name="verify"),
     path('error', error_page, name="error"),
+    path('upload', upload, name="upload"),
+    path('files', files, name="files")
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
