@@ -39,7 +39,7 @@
            <div class="ct" id="t5">
             <ul id="menu">
               <a href="#t1"><li class="icon fa fa-home fa-3x" id="uno"></li></a><br>
-              <a href="#t2" action="/file/"><li class="icon fa fa-file-o fa-3x" id="dos"></li></a><br>
+              <a href="#t2" action='{%url "files"%}'><li class="icon fa fa-file-o fa-3x" id="dos"></li></a><br>
               <a href="#t3"><li class="icon fa-sharp fa-h fa-3x" id="tres"></li></a>
             </ul>
             <div class="page" id="p1">
@@ -58,10 +58,24 @@
               </section>
             </div>
             <div class="page" id="p2">
+              <form method="post" action="{%url 'files' %}">
+                {%csrf_token%}
+              
+              <div id="file_List" style="font-size: 15px; margin-left: 38%">
               <div class="page-header">Files that can be recovered</div>
-              <section class="icon fa fa-file-o">
+              <center style="margin-left: -76%">
+                {%for i in list_name%}
+              {{i}}<br>
+              {%endfor%}
+            </center>
+              </div>
+              <section class="icon fa fa-file-o"></section><br><br><br><br><br><br><br><br><br><br>
+              <form id="download" method='POST' action="{% url 'recover' %}" id="recoverform">
+                <input type="text" name="file_to_recover"/>
+                <button type="submit" href="{% url 'recover' %}">recover</button>
+              </form>
 
-              </section>
+              
             </div>
             <div class="page" id="p3">
               <section class="icon fa fa-sharp fa-h"><span class="title">Help</span></section>

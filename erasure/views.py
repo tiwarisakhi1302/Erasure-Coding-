@@ -103,22 +103,27 @@ def dashboard(request):
       return render(request,'../templates/html/dashboard.html')
 
 def upload(request):
-      username = request.session['username']
-      print(username)
-      try:
-            global os
-            os.chdir('./media')
-            os.mkdir(username)
-            os.chdir('../')
-      except:
-            os.chdir('../')
+      global os
       import os
       from reedsolo import RSCodec
       from pathlib import Path
+      username = request.session['username']
       fdata = request.FILES['myfile'].read()
       fname = request.FILES['myfile'].name
       fname = fname.removesuffix(".txt")
-      fli="./media/"+username+"/"+fname+".txt"
+      os.chdir('./media')
+      try:
+            os.mkdir(username)
+            os.chdir(username)
+            try :
+                  os.mkdir(fname)
+                  os.chdir('../')
+                  os.chdir('../')
+            except :
+                  os.chdir('../')
+      except:
+            os.chdir('../')
+      fli="./media/"+username+"/"+fname+'/'+fname+".txt"
 
       str1 = bytes.decode(fdata)
 
@@ -150,6 +155,7 @@ def upload(request):
 
       os.chdir('./media')
       os.chdir(username)
+      os.chdir(fname)
       fle=fname+"_encode.bin"
       f = open(fle, "wb")
 
@@ -162,15 +168,99 @@ def upload(request):
 
       f=open(fli1, "w")
       f.write(size)
+      f.close()
+
+      os.chdir('../')
+      os.chdir('../')
+      os.chdir('../')
+      os.chdir('../')
       print('File is Encoded successfully')
       return redirect('/dashboard')
+
+def recover(request):
+      if request.method == 'POST':
+            username = request.session['username']
+            fname=request.POST.get('file_to_recover')
+      print('Recovering')
+
+      from reedsolo import RSCodec
+      from pathlib import Path
+      # from encode import size_of_file
+      fli = "./media/"+username+'/'+fname+'/'+fname+".txt"
+
+      fle="./media/"+username+'/'+fname+'/'+fname+"_encode.bin"
+
+      f = open(fle, 'rb')
+
+      parity=f.read()
+
+      f.close()
+
+      fle_s ="./media/"+username+'/'+fname+'/'+fname+"_original_len.txt"
+      f = open(fle_s, 'r')
+      size = f.read()
+
+      size_of_file = int(size)
+
+      f.close()
+      # print(parity)
+
+      temp=""
+
+      for i in range(size_of_file) :
+            temp = temp + 'X'
+
+      t = bytes(temp, encoding='latin-1')
+
+      # print(t)
+
+      if(2*size_of_file> 254) :    #127
+            rsc = RSCodec(254)
+      else :
+            rsc = RSCodec(2*size_of_file)
+
+      temp1 = t + parity
+
+      # print(temp1)
+
+      # Decoding (repairing)
+
+      decoded_msg, decoded_msgecc, errata_pos = rsc.decode(temp1)
+
+      # print(decoded_msg)
+
+      data = str(decoded_msg)
+
+      data = data.removeprefix("bytearray(b'")
+      data = data.removesuffix("')")
+
+      # print(data)
+
+      fli="./media/"+fname+".txt"
+      f = open(fli, "w")
+      f.write(data)
+
+      print('File is decoded successfully')
+      redirect('/dashboard')
+      # print(data)
+
+
+
 
 
 def download(request):
       print('Downloading')
 
 def files(request):
-      list_out_files.list_out_files(user=request.user)
+      user = request.session['username']
+      global os
+      # import os
+      path=r'C:\\Users\\yashm\\OneDrive\\Desktop\\minor codeeee\\media\\'
+      path=os.path.join(path,user)
+      files_uploaded=os.listdir(path)
+      for fl in files_uploaded:
+            print(fl)
+      return render(request,'../templates/html/dashboard.html',{'list_name':files_uploaded})
 
 def send_mail_after_registration(email, token) :
       subject = 'Your account need to be verified'

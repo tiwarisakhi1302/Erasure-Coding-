@@ -28,7 +28,7 @@ def recover(file_name):
     temp=""
 
     for i in range(size_of_file) :
-        temp = temp + 'X';
+        temp = temp + 'X'
 
     t = bytes(temp, encoding='latin-1')
 

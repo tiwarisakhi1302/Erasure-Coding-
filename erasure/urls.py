@@ -14,7 +14,8 @@ urlpatterns = [
     path('verify/<auth_token>', verify, name="verify"),
     path('error', error_page, name="error"),
     path('upload', upload, name="upload"),
-    path('files', files, name="files")
+    path('files', files, name="files"),
+    path('recover', recover, name="recover")
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
